@@ -34,7 +34,7 @@ const Form = ({ currentId, setcurrentId }) => {
       dispatch(createPosts(postData))
     }
     clear()
-  } 
+  }
 
   const clear = () => {
     setcurrentId(null)
@@ -55,7 +55,7 @@ const Form = ({ currentId, setcurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? "Editing" : "Reminiscing"}...
+          {currentId ? "Editing" : "Add a nostalgic moment?"}...
         </Typography>
         <TextField
           name="creator"
@@ -93,7 +93,9 @@ const Form = ({ currentId, setcurrentId }) => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(",") })
+          }
         />
         <div className={classes.fileInput}>
           <FileBase
